@@ -4,12 +4,10 @@ from .models import *
 admin.site.register(Profile)
 admin.site.register(Book)
 admin.site.register(Categories)
-admin.site.register(BookReturnedRecord)
-admin.site.register(BookRating)
 admin.site.register(Cart)
 admin.site.register(CartItem)
 admin.site.register(Login)
-from .models import BookRating
+admin.site.register(Articles)
 class CartAdmin(admin.ModelAdmin):
     pass
 

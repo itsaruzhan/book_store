@@ -48,6 +48,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200, blank=False, null=False)
     image = models.ImageField(upload_to='img', blank=True, null=True)
     author = models.CharField(max_length=100, blank=False, null=False)
+    description = models.TextField()
     publisher = models.CharField(max_length=100)
     copies = models.IntegerField()
     available = models.BooleanField()
@@ -55,9 +56,10 @@ class Book(models.Model):
     category_id = models.ForeignKey(Categories, related_name='books', on_delete=models.DO_NOTHING)
     price= models.DecimalField(max_digits=10, decimal_places=2)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+    pages = models.IntegerField()
    
     def get_absolute_url(self):
-        return reverse('post', kwargs={'post_slug': self.slug})
+        return reverse('post', kwargs={'book_slug': self.slug})
     
     def __str__(self):
        return self.title
@@ -67,21 +69,6 @@ class Book(models.Model):
             self.slug = slugify(self.first_name)
         super(Book, self).save(*args, **kwargs)
     
-    
- 
-class BookReturnedRecord(models.Model):
-    borrower_id =  models.BigAutoField(primary_key=True)
-    book_id = models.ForeignKey(Book, on_delete=models.DO_NOTHING)   
-    stud_id = models.ForeignKey(Profile, related_name='borrows', on_delete=models.DO_NOTHING)
-    taken_date = models.DateTimeField(auto_now_add=True)
-    due_date = models.DateTimeField()
-    returned = models.BooleanField()
-        
-   
-class BookRating(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    rating = models.IntegerField(default=1)
     
       
 class Login(models.Model):
@@ -96,3 +83,9 @@ class CartItem(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE)    
+
+class Articles(models.Model): #Мақалалар
+    title = models.CharField(max_length=200, blank=False, null=False)
+    image = models.ImageField(upload_to='img', blank=True, null=True)  
+    action_date = models.DateTimeField() 
+

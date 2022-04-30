@@ -4,11 +4,11 @@
 {% load crispy_forms_tags %}
        {% block content %}
    
-       
+     <!-- Top books -->  
 <div class="container-xl">
 	<div class="row">
 		<div class="col-md-12">
-			<h2>Featured <b>Products</b></h2>
+			<h2>Топ <b>Кітаптар</b></h2>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
 			<!-- Carousel indicators -->
 			<ol class="carousel-indicators">
@@ -20,7 +20,8 @@
 			<div class="carousel-inner">
 				<div class="item carousel-item active">
 					<div class="row">
-                        {% for i in books1 %}
+						
+                        {% for i in topBooks1 %}
 						<div class="col-sm-3">
 							<div class="thumb-wrapper">
 								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
@@ -42,13 +43,14 @@
 									<a href="#" class="btn btn-primary">Add to Cart</a>
 								</div>						
 							</div>
+							
 						</div>
                         {% endfor %}
-					</div>
+					</div><a href="#" class="btn btn-primary">View All</a>
 				</div>
 				<div class="item carousel-item">
 					<div class="row">
-                        {% for i in books2 %}
+                        {% for i in topBooks2 %}
 						<div class="col-sm-3">
 							<div class="thumb-wrapper">
 								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
@@ -73,11 +75,98 @@
 						</div>
                         {% endfor %}
 									
-					</div>
+					</div><a href="#" class="btn btn-primary">View All</a>
 				</div>
 				<div class="item carousel-item">
 					<div class="row">
-                        {% for i in books3 %}
+                        {% for i in topBooks3 %}
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+                                   <img src="{{i.image.url}}" class="img img-responsive">	
+								</div>
+								<div class="thumb-content">
+									<h4>{{i.title}}</h4>									
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<p class="item-price"><b>{{i.author}}</b></p>
+									
+									<a href="#" class="btn btn-primary">Add to Cart</a>
+								</div>						
+							</div>
+						</div>
+                        {% endfor %}
+					</div><a href="#" class="btn btn-primary">View All</a>
+				</div>
+			</div>
+			<!-- Carousel controls -->
+			<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+				<i class="fa fa-angle-left"></i>
+			</a>
+			<a class="carousel-control-next" href="#myCarousel" data-slide="next">
+				<i class="fa fa-angle-right"></i>
+			</a>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container-xl">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Жаңа <b>Кітаптар</b></h2>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+			<!-- Carousel indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>   
+			<!-- Wrapper for carousel items -->
+			<div class="carousel-inner">
+				<div class="item carousel-item active">
+					<div class="row">
+						
+                        {% for i in newBooks1 %}
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+                                   <img src="{{i.image.url}}" class="img img-responsive">			
+								</div>
+								<div class="thumb-content">
+									<h4>{{i.title}}</h4>									
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<p class="item-price"><b>{{i.author}}</b></p>
+									<a href="#" class="btn btn-primary">Add to Cart</a>
+								</div>						
+							</div>
+							
+						</div>
+                        {% endfor %}
+					</div><a href="#" class="btn btn-primary">View All</a>
+				</div>
+				<div class="item carousel-item">
+					<div class="row">
+                        {% for i in newBooks2 %}
 						<div class="col-sm-3">
 							<div class="thumb-wrapper">
 								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
@@ -101,7 +190,37 @@
 							</div>
 						</div>
                         {% endfor %}
-					</div>
+									
+					</div><a href="#" class="btn btn-primary">View All</a>
+				</div>
+				<div class="item carousel-item">
+					<div class="row">
+                        {% for i in newBooks3 %}
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+                                   <img src="{{i.image.url}}" class="img img-responsive">	
+								</div>
+								<div class="thumb-content">
+									<h4>{{i.title}}</h4>									
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<p class="item-price"><b>{{i.author}}</b></p>
+									
+									<a href="#" class="btn btn-primary">Add to Cart</a>
+								</div>						
+							</div>
+						</div>
+                        {% endfor %}
+					</div><a href="#" class="btn btn-primary">View All</a>
 				</div>
 			</div>
 			<!-- Carousel controls -->

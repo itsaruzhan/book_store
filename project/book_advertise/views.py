@@ -61,10 +61,16 @@ def login_request(request):
   return render(request=request, template_name="book_advertise/login.html", context={"login_form":form})
 
 def mainpage_books(request):
-    books1 = Book.objects.filter(category_id=42)
-    books2 = Book.objects.filter(category_id=43)
-    books3 = Book.objects.filter(category_id=44)
-    return render(request, 'book_advertise/main.html', {'books1':books1,'books2':books2, 'books3':books3 })
+    books1 = Book.objects.filter(category_id=1)
+    books2 = Book.objects.filter(category_id=2)
+    books3 = Book.objects.filter(category_id=3)
+    newBooks1=Book.objects.filter().order_by('-book_id')[:4]
+    newBooks2=Book.objects.filter().order_by('-book_id')[4:8]
+    newBooks3=Book.objects.filter().order_by('-book_id')[8:12]
+    topBooks1=Book.objects.filter().order_by('price')[:4]
+    topBooks2=Book.objects.filter().order_by('price')[4:8]
+    topBooks3=Book.objects.filter().order_by('price')[8:12]
+    return render(request, 'book_advertise/main.html', {'newBooks1': newBooks1,'newBooks2': newBooks2, 'newBooks3': newBooks3,'topBooks1':topBooks1, 'topBooks2':topBooks2, 'topBooks3':topBooks3})
 
 def my_profile(request, id):
     student = User.objects.get(id=id)
